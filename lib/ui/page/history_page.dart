@@ -130,7 +130,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                     ],
                   ),
 
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 80),
 
                   // List order (grid horizontal)
                   Expanded(
@@ -147,15 +147,21 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                               "nama": "Matcha infused green tea",
                               "harga": 75000,
                             },
-                          ],
-                          subtotal: 500000,
-                          pajak: 50000,
-                        ),
-                        OrderCard(
-                          meja: "Table 18",
-                          customer: "Vinicius saputra",
-                          waktu: "3:00 P.M.",
-                          items: [
+                            {
+                              "qty": 3,
+                              "nama": "Matcha infused green tea",
+                              "harga": 75000,
+                            },
+                            {
+                              "qty": 3,
+                              "nama": "Matcha infused green tea",
+                              "harga": 75000,
+                            },
+                            {
+                              "qty": 3,
+                              "nama": "Matcha infused green tea",
+                              "harga": 75000,
+                            },
                             {
                               "qty": 3,
                               "nama": "Matcha infused green tea",
@@ -165,7 +171,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                           subtotal: 500000,
                           pajak: 50000,
                         ),
-                        OrderCard(
+                         OrderCard(
                           meja: "Table 18",
                           customer: "Vinicius saputra",
                           waktu: "3:00 P.M.",
@@ -175,15 +181,89 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                               "nama": "Matcha infused green tea",
                               "harga": 75000,
                             },
+                            {
+                              "qty": 3,
+                              "nama": "Matcha infused green tea",
+                              "harga": 75000,
+                            },
+                            {
+                              "qty": 3,
+                              "nama": "Matcha infused green tea",
+                              "harga": 75000,
+                            },
+                            {
+                              "qty": 3,
+                              "nama": "Matcha infused green tea",
+                              "harga": 75000,
+                            },
+                            {
+                              "qty": 3,
+                              "nama": "Matcha infused green tea",
+                              "harga": 75000,
+                            },
                           ],
                           subtotal: 500000,
                           pajak: 50000,
                         ),
-                        OrderCard(
+                         OrderCard(
                           meja: "Table 18",
                           customer: "Vinicius saputra",
                           waktu: "3:00 P.M.",
                           items: [
+                            {
+                              "qty": 3,
+                              "nama": "Matcha infused green tea",
+                              "harga": 75000,
+                            },
+                            {
+                              "qty": 3,
+                              "nama": "Matcha infused green tea",
+                              "harga": 75000,
+                            },
+                            {
+                              "qty": 3,
+                              "nama": "Matcha infused green tea",
+                              "harga": 75000,
+                            },
+                            {
+                              "qty": 3,
+                              "nama": "Matcha infused green tea",
+                              "harga": 75000,
+                            },
+                            {
+                              "qty": 3,
+                              "nama": "Matcha infused green tea",
+                              "harga": 75000,
+                            },
+                          ],
+                          subtotal: 500000,
+                          pajak: 50000,
+                        ),
+                         OrderCard(
+                          meja: "Table 18",
+                          customer: "Vinicius saputra",
+                          waktu: "3:00 P.M.",
+                          items: [
+                            {
+                              "qty": 3,
+                              "nama": "Matcha infused green tea",
+                              "harga": 75000,
+                            },
+                            {
+                              "qty": 3,
+                              "nama": "Matcha infused green tea",
+                              "harga": 75000,
+                            },
+                            {
+                              "qty": 3,
+                              "nama": "Matcha infused green tea",
+                              "harga": 75000,
+                            },
+                            {
+                              "qty": 3,
+                              "nama": "Matcha infused green tea",
+                              "harga": 75000,
+                            },
                             {
                               "qty": 3,
                               "nama": "Matcha infused green tea",
@@ -196,6 +276,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                       ],
                     ),
                   ),
+                  SizedBox(height: 90),
                 ],
               ),
             ),

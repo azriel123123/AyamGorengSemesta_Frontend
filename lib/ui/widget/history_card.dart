@@ -60,13 +60,13 @@ class OrderCard extends StatelessWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: Image.asset(
-                          "asset/foto.JPG",
-                          width: 48,
-                          height: 48,
-                          fit: BoxFit.cover,
+                          "asset/foto2.jpeg",
+                          width: 70,
+                          height: 70,
+                          fit: BoxFit.fill,
                         ),
                       ),
-                      const SizedBox(width: 12),
+                      const SizedBox(width: 20),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
