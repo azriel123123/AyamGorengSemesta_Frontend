@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pos_system/data/datasource/auth_local_datasource.dart';
+import 'package:pos_system/ui/bloc/logout/logout_bloc.dart';
 
 /// Sidebar kiri aplikasi POS System.
-/// 
+///
 /// Berfungsi sebagai panel navigasi utama:
 /// - Menampilkan logo/nama brand.
 /// - Menyediakan menu navigasi utama (home, item, history).
 /// - Menampilkan informasi user yang sedang bertugas.
-/// - Tombol logout di bagian bawah.
+/// - Tombol logout di bagian bawah (sudah pakai BLoC).
 class SidebarLeft extends StatelessWidget {
   const SidebarLeft({super.key});
 
@@ -56,13 +59,53 @@ class SidebarLeft extends StatelessWidget {
 
           const SizedBox(height: 16),
 
-          /// Tombol logout
-          TextButton.icon(
-            onPressed: () {
-              // TODO: Tambahkan logika logout
+          /// Tombol logout dengan BlocConsumer
+          BlocConsumer<LogoutBloc, LogoutState>(
+            listener: (context, state) async {
+              if (state is LogoutSuccess) {
+                /// Hapus data auth
+                await AuthLocalDatasource().removeAuthData();
+
+                /// Kasih notif berhasil
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("Logout berhasil!"),
+                    backgroundColor: Colors.green,
+                  ),
+                );
+
+                /// Navigasi ke login
+                Navigator.pushReplacementNamed(context, "/login");
+              }
+
+              if (state is LogoutFailure) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(state.message),
+                    backgroundColor: Colors.red,
+                  ),
+                );
+              }
             },
-            icon: const Icon(Icons.logout, color: Colors.red),
-            label: const Text("Logout", style: TextStyle(color: Colors.red)),
+            builder: (context, state) {
+              if (state is LogoutLoading) {
+                return const Padding(
+                  padding: EdgeInsets.all(12),
+                  child: CircularProgressIndicator(color: Colors.red),
+                );
+              }
+
+              return TextButton.icon(
+                onPressed: () {
+                  context.read<LogoutBloc>().add(LogoutButtonPressed());
+                },
+                icon: const Icon(Icons.logout, color: Colors.red),
+                label: const Text(
+                  "Logout",
+                  style: TextStyle(color: Colors.red),
+                ),
+              );
+            },
           ),
 
           const SizedBox(height: 16),
@@ -72,9 +115,9 @@ class SidebarLeft extends StatelessWidget {
   }
 
   /// Widget builder untuk item menu sidebar.
-  /// 
-  /// [icon] → ikon menu.  
-  /// [title] → judul menu.  
+  ///
+  /// [icon] → ikon menu.
+  /// [title] → judul menu.
   static Widget _menuItem(IconData icon, String title) {
     return ListTile(
       leading: Icon(icon, color: Colors.black),
